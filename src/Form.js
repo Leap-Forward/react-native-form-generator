@@ -21,6 +21,7 @@ export class Form extends React.Component{
     this.props.onFocus && this.props.onFocus(event, inputHandle);
   }
   handleFieldChange(field_ref, value){
+    this.values = {...this.values}
     this.values[field_ref] = value;
     this.props.onChange && this.props.onChange(this.values);
   }
