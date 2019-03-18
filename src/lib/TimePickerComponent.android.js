@@ -14,7 +14,6 @@ import {Field} from './Field';
         date: props.date? new Date(props.date) :'',
         isPickerVisible: false
       }
-
     }
 
     handleLayoutChange(e){
@@ -25,11 +24,12 @@ import {Field} from './Field';
     }
 
     handleValueChange(date){
-
       this.setState({date:date});
 
-      if(this.props.onChange)      this.props.onChange(date);
-      if(this.props.onValueChange) this.props.onValueChange(date);
+      if(this.props.onChange)
+        this.props.onChange(date);
+      if(this.props.onValueChange)
+        this.props.onValueChange(date);
     }
 
     setTime(date){
@@ -40,7 +40,17 @@ import {Field} from './Field';
 
     async _togglePicker(event){
       try {
-        const {action, hour, minute} = await TimePickerAndroid.open({...this.props.options});
+        const { date } = this.props;
+        const minute = date.getMinutes();
+        const hour = date.getHours();
+        const options = {
+          ...this.props.options,
+          minute,
+          hour,
+        };
+
+        console.log(hour, minute);
+        const { action }  = await TimePickerAndroid.open(options);
         if (action !== TimePickerAndroid.dismissedAction) {
           let date = new Date(0,0,0,hour, minute);
 
@@ -57,6 +67,11 @@ import {Field} from './Field';
       let placeholderComponent = (this.props.placeholderComponent)
                         ? this.props.placeholderComponent
                         : <Text style={[formStyles.fieldText, this.props.placeholderStyle]}>{this.props.placeholder}</Text>
+
+      const { date } = this.props;
+
+      //console.log(date);
+
       return(<View><Field
         {...this.props}
         ref='inputBox'
@@ -71,8 +86,6 @@ import {Field} from './Field';
             <Text style={[formStyles.fieldValue,this.props.valueStyle ]}>{
             this.props.dateTimeFormat(this.state.date)
           }</Text>
-
-
           </View>
           {(this.props.iconRight)
               ? this.props.iconRight
@@ -81,9 +94,9 @@ import {Field} from './Field';
         </View>
         </Field>
         {(this.state.isPickerVisible)?
-          <DatePickerAndroid
+          <TimePickerAndroid
             {...this.props}
-           date={this.state.date || new Date()}
+           date={this.props.date}
 
            onDateChange={this.handleValueChange.bind(this)}
          />
