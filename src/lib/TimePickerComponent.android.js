@@ -12,15 +12,7 @@ import {Field} from './Field';
       super(props);
       this.state = {
         date: props.date? new Date(props.date) :'',
-        isPickerVisible: false
       }
-    }
-
-    handleLayoutChange(e){
-      let {x, y, width, height} = {... e.nativeEvent.layout};
-
-      this.setState(e.nativeEvent.layout);
-      //e.nativeEvent.layout: {x, y, width, height}}}.
     }
 
     handleValueChange(date){
@@ -41,18 +33,19 @@ import {Field} from './Field';
     async _togglePicker(event){
       try {
         const { date } = this.props;
-        const minute = date.getMinutes();
-        const hour = date.getHours();
+        const minuteInitial = date.getMinutes();
+        const hourInitial = date.getHours();
         const options = {
           ...this.props.options,
-          minute,
-          hour,
-        };
+          minute: minuteInitial,
+          hour: hourInitial,
+        }
 
-        console.log(hour, minute);
-        const { action }  = await TimePickerAndroid.open(options);
+        console.log(hourInitial, minuteInitial);
+        const { action, hour, minute }  = await TimePickerAndroid.open(options);
         if (action !== TimePickerAndroid.dismissedAction) {
-          let date = new Date(0,0,0,hour, minute);
+          console.log(hour, minute);
+          let date = new Date(0,0,0, hour, minute);
 
           this.handleValueChange(date);
           // Selected year, month (0-11), day
@@ -68,7 +61,7 @@ import {Field} from './Field';
                         ? this.props.placeholderComponent
                         : <Text style={[formStyles.fieldText, this.props.placeholderStyle]}>{this.props.placeholder}</Text>
 
-      const { date } = this.props;
+      const { date } = this.state;
 
       //console.log(date);
 
@@ -78,13 +71,12 @@ import {Field} from './Field';
         onPress={this._togglePicker.bind(this)}>
         <View style={[formStyles.fieldContainer,
             formStyles.horizontalContainer,
-            this.props.containerStyle]}
-          onLayout={this.handleLayoutChange.bind(this)}>
+            this.props.containerStyle]}>
 
           {placeholderComponent}
           <View style={[formStyles.alignRight, formStyles.horizontalContainer]}>
             <Text style={[formStyles.fieldValue,this.props.valueStyle ]}>{
-            this.props.dateTimeFormat(this.state.date)
+            this.props.dateTimeFormat(date)
           }</Text>
           </View>
           {(this.props.iconRight)
@@ -93,17 +85,6 @@ import {Field} from './Field';
             }
         </View>
         </Field>
-        {(this.state.isPickerVisible)?
-          <TimePickerAndroid
-            {...this.props}
-           date={this.props.date}
-
-           onDateChange={this.handleValueChange.bind(this)}
-         />
-
-        : null
-      }
-
     </View>
       )
     }
