@@ -76,15 +76,15 @@ export class TimePickerComponent extends React.Component {
             this.props.containerStyle]}>
 
             {placeholderComponent}
-            <View style={[formStyles.alignRight, formStyles.horizontalContainer]}>
-              <Text style={[formStyles.fieldValue, this.props.valueStyle]}>{
-                this.props.dateTimeFormat(date)
-              }</Text>
+            <View style={formStyles.horizontalContainer}>
+              <Text style={[formStyles.fieldValue, this.props.valueStyle]}>
+                {this.props.dateTimeFormat(date)}
+              </Text>
+              {(this.props.iconRight)
+                  ? this.props.iconRight
+                  : null
+              }
             </View>
-            {(this.props.iconRight)
-                ? this.props.iconRight
-                : null
-            }
           </View>
         </Field>
         </View>
@@ -107,7 +107,6 @@ TimePickerComponent.defaultProps = {
 
 
 let formStyles = StyleSheet.create({
-  form: {},
   alignRight: {
     marginTop: 7, position: 'absolute', right: 10
   },
@@ -121,10 +120,8 @@ let formStyles = StyleSheet.create({
     paddingTop: 35,
     borderBottomColor: '#C8C7CC',
     borderBottomWidth: 1,
-
   },
   separator: {
-
     paddingLeft: 10,
     paddingRight: 10,
     color: '#6D6D72',
@@ -137,8 +134,8 @@ let formStyles = StyleSheet.create({
   },
   horizontalContainer: {
     flexDirection: 'row',
-
-    justifyContent: 'flex-start'
+    alignItems: 'center',
+    justifyContent: 'flex-end'
   },
   fieldContainer: {
     borderBottomWidth: 1,
@@ -152,15 +149,10 @@ let formStyles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     marginRight: 10,
-    paddingTop: 4,
     justifyContent: 'center',
-
     color: '#C7C7CC'
   },
   fieldText: {
-    fontSize: 34 / 2,
-    paddingLeft: 10,
-    paddingRight: 10,
     justifyContent: 'center',
     lineHeight: 32
   },
@@ -174,7 +166,6 @@ let formStyles = StyleSheet.create({
     marginBottom: 25,
     paddingLeft: 20,
     paddingRight: 20,
-
   },
   helpText: {
     color: '#7a7a7a'

@@ -26,15 +26,10 @@ export class TimePickerField extends React.Component {
       {...this.props}
       date={this.state.date}
       ref='datePickerComponent'
-      labelStyle={[formStyles.fieldText, this.props.labelStyle]}
-      valueStyle={[formStyles.fieldValue, this.props.valueStyle]}
-      valueContainerStyle={[formStyles.alignRight,
-        formStyles.horizontalContainer, this.props.valueContainerStyle]}
-      containerStyle={[
-        formStyles.fieldContainer,
-        formStyles.horizontalContainer,
-        this.props.containerStyle,
-      ]}
+      labelStyle={this.props.labelStyle}
+      valueStyle={this.props.valueStyle}
+      valueContainerStyle={this.props.valueContainerStyle}
+      containerStyle={this.props.containerStyle}
     />)
   }
 
@@ -45,30 +40,6 @@ let formStyles = StyleSheet.create({
   form: {},
   alignRight: {
     marginTop: 7, position: 'absolute', right: 10
-  },
-  noBorder: {
-    borderTopWidth: 0,
-    borderBottomWidth: 0
-  },
-  separatorContainer: {
-    // borderTopColor: '#C8C7CC',
-    // borderTopWidth: 1,
-    paddingTop: 35,
-    borderBottomColor: '#C8C7CC',
-    borderBottomWidth: 1,
-
-  },
-  separator: {
-
-    paddingLeft: 10,
-    paddingRight: 10,
-    color: '#6D6D72',
-    paddingBottom: 7
-
-  },
-  fieldsWrapper: {
-    // borderTopColor: '#afafaf',
-    // borderTopWidth: 1,
   },
   horizontalContainer: {
     flexDirection: 'row',
@@ -104,14 +75,4 @@ let formStyles = StyleSheet.create({
     paddingRight: 10,
 
   },
-  helpTextContainer: {
-    marginTop: 9,
-    marginBottom: 25,
-    paddingLeft: 20,
-    paddingRight: 20,
-
-  },
-  helpText: {
-    color: '#7a7a7a'
-  }
 });
