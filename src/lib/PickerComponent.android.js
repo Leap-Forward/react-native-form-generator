@@ -70,7 +70,7 @@ export class PickerComponent extends React.Component {
             <Text style={this.props.labelStyle}>{this.props.label}</Text>
             <Picker ref='picker'
                     {...this.props.pickerProps}
-                    style={{height: 50, width: 100}}
+                    style={{height: 50, width: 120}}
                     selectedValue={this.state.value}
                     onValueChange={this.handleValueChange.bind(this)}
             >
