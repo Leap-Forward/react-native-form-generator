@@ -135,13 +135,11 @@ export class PickerComponent extends React.Component{
             <Text style={this.props.valueStyle}>
               {(this.state.value)?this.props.options[this.state.value]:''}
             </Text>
-
-          </View>
-          {(this.props.iconRight)
+            {(this.props.iconRight)
               ? this.props.iconRight
               : null
             }
-
+          </View>
         </View>
         </Field>
         {(this.state.isPickerVisible)?

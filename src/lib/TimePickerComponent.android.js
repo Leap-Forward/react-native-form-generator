@@ -60,34 +60,34 @@ export class TimePickerComponent extends React.Component {
 
   render() {
     let placeholderComponent = (this.props.placeholderComponent)
-        ? this.props.placeholderComponent
-        : <Text style={[formStyles.fieldText, this.props.placeholderStyle]}>{this.props.placeholder}</Text>
+      ? this.props.placeholderComponent
+      : <Text style={[formStyles.fieldText, this.props.placeholderStyle]}>{this.props.placeholder}</Text>
 
     const { date } = this.state;
 
     //console.log(date);
 
     return (<View><Field
-            {...this.props}
-            ref='inputBox'
-            onPress={this._togglePicker.bind(this)}>
-          <View style={[formStyles.fieldContainer,
-            formStyles.horizontalContainer,
-            this.props.containerStyle]}>
+        {...this.props}
+        ref='inputBox'
+        onPress={this._togglePicker.bind(this)}>
+        <View style={[formStyles.fieldContainer,
+          formStyles.horizontalContainer,
+          this.props.containerStyle]}>
 
-            {placeholderComponent}
-            <View style={formStyles.horizontalContainer}>
-              <Text style={[formStyles.fieldValue, this.props.valueStyle]}>
-                {this.props.dateTimeFormat(date)}
-              </Text>
-              {(this.props.iconRight)
-                  ? this.props.iconRight
-                  : null
-              }
-            </View>
+          {placeholderComponent}
+          <View style={formStyles.horizontalContainer}>
+            <Text style={[formStyles.fieldValue, this.props.valueStyle]}>
+              {this.props.dateTimeFormat(date)}
+            </Text>
+            {(this.props.iconRight)
+              ? this.props.iconRight
+              : null
+            }
           </View>
-        </Field>
         </View>
+      </Field>
+      </View>
     )
   }
 

@@ -38,17 +38,17 @@ export class SwitchComponent extends React.Component {
   render() {
 
     return (<Field {...this.props}>
-          <View style={this.props.containerStyle}
-                onLayout={this.handleLayoutChange.bind(this)}>
+        <View style={this.props.containerStyle}
+              onLayout={this.handleLayoutChange.bind(this)}>
 
-            <Text style={this.props.labelStyle}>{this.props.label}</Text>
-            <Switch
-                onValueChange={this.handleValueChange.bind(this)}
-                style={this.props.switchStyle}
-                value={this.state.value}/>
-          </View>
+          <Text style={this.props.labelStyle}>{this.props.label}</Text>
+          <Switch
+            onValueChange={this.handleValueChange.bind(this)}
+            style={this.props.switchStyle}
+            value={this.state.value}/>
+        </View>
 
-        </Field>
+      </Field>
     )
   }
 
