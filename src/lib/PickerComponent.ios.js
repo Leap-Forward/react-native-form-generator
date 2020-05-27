@@ -95,6 +95,7 @@ export class PickerComponent extends React.Component{
         selectedValue={this.state.value}
         onValueChange={this.handleValueChange.bind(this)}
         mode='dropdown'
+        itemStyle={this.props.valueStyle}
         >
         {Object.keys(this.props.options).map((value) => (
           <PickerItem
