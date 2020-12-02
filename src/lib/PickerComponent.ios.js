@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactNative from 'react-native';
-import Picker from '@react-native-community/picker';
+import { Picker } from '@react-native-community/picker';
 let { View, StyleSheet, TextInput, Text } = ReactNative;
 import {Field} from '../lib/Field';
 
