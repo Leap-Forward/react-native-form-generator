@@ -2,8 +2,9 @@
 
 import React from 'react';
 import ReactNative from 'react-native';
+import Picker from '@react-native-community/picker';
 
-let { View, StyleSheet, TextInput, Text, Picker } = ReactNative;
+let { View, StyleSheet, TextInput, Text } = ReactNative;
 import { Field } from '../lib/Field';
 
 var PickerItem = Picker.Item;

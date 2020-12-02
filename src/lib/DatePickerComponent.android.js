@@ -3,7 +3,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-let { View, StyleSheet, TextInput, Text, DatePickerAndroid} = require('react-native');
+import DateTimePicker from '@react-native-community/datetimepicker';
+let { View, StyleSheet, TextInput, Text } = require('react-native');
 import {Field} from './Field';
 
 
@@ -44,13 +45,13 @@ import {Field} from './Field';
     async _togglePicker(event){
       try {
 
-        const {action, year, month, day} = await DatePickerAndroid.open({
+        const {action, year, month, day} = await DateTimePicker.open({
           date: this.props.date || new Date(),
 	  minDate:this.props.minimumDate,
 
           maxDate:this.props.maximumDate
         });
-        if (action !== DatePickerAndroid.dismissedAction) {
+        if (action !== DateTimePicker.dismissedAction) {
           this.handleValueChange(new Date(year,month,day));
           // Selected year, month (0-11), day
         }
@@ -91,7 +92,7 @@ import {Field} from './Field';
         </View>
         </Field>
         {(this.state.isPickerVisible)?
-          <DatePickerAndroid
+          <DateTimePicker
             {...this.props}
            date={this.state.date || new Date()}
 

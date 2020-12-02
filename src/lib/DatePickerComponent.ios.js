@@ -3,7 +3,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-let { View, StyleSheet, TextInput, Text, DatePickerIOS} = require('react-native');
+import DateTimePicker from '@react-native-community/datetimepicker';
+
+let { View, StyleSheet, TextInput, Text } = require('react-native');
 import {Field} from './Field';
 
 
@@ -55,7 +57,7 @@ export class DatePickerComponent extends React.Component{
 
     let  valueString = this.props.dateTimeFormat(this.state.date, this.props.mode);
 
-    let datePicker= <DatePickerIOS
+    let datePicker= <DateTimePicker
       maximumDate = {maximumDate}
       minimumDate = {minimumDate}
       minuteInterval = {minuteInterval}

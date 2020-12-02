@@ -2,10 +2,10 @@
 
 import React from 'react';
 import ReactNative from 'react-native';
-let { View, StyleSheet, TextInput, Text, PickerIOS} = ReactNative;
+import { PickerComponent } from '../lib/PickerComponent';
 
+let { View, StyleSheet, TextInput, Text } = ReactNative;
 
-import {PickerComponent} from '../lib/PickerComponent';
 
 export class PickerField extends React.Component{
   setValue(value){

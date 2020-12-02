@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactNative from 'react-native';
-let { View, StyleSheet, TextInput, Text, PickerIOS} = ReactNative;
+let { View, StyleSheet, TextInput, Text } = ReactNative;
 
 
 import {PickerComponent} from '../lib/PickerComponent';
