@@ -3,8 +3,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-
-let { View, StyleSheet, TextInput, Text, TimePickerAndroid } = require('react-native');
+import DateTimePicker from '@react-native-community/datetimepicker';
+let { View, StyleSheet, TextInput, Text } = require('react-native');
 import { Field } from './Field';
 
 
@@ -43,8 +43,8 @@ export class TimePickerComponent extends React.Component {
       }
 
       console.log(hourInitial, minuteInitial);
-      const { action, hour, minute } = await TimePickerAndroid.open(options);
-      if (action !== TimePickerAndroid.dismissedAction) {
+      const { action, hour, minute } = await DateTimePicker.open(options);
+      if (action !== DateTimePicker.dismissedAction) {
         console.log(hour, minute);
         let date = new Date(0, 0, 0, hour, minute);
 
