@@ -77,7 +77,7 @@ export class PickerComponent extends React.Component {
             >
               {Object.keys(this.props.options).map((value) => (
                   <PickerItem
-                      color="white"
+                      color="black"
                       key={value}
                       value={value}
                       label={this.props.options[value]}
